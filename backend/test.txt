@@ -1,0 +1,9 @@
+register:
+    {
+  "user_name": "nguyenhung123",
+  "password": "Matkhau@123",
+  "email": "nguyenhung@example.com",
+  "phone_number": "0912345678",
+  "full_name": "Nguyễn Duy Hưng",
+  "gender": 1
+}

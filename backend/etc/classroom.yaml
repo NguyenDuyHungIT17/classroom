@@ -1,0 +1,18 @@
+Name: classroom-api
+Host: 0.0.0.0
+Port: 8888
+
+DataSource: root:Duyhung@18022004mysql@tcp(localhost:3306)/classroom
+
+Auth:
+  AccessSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  AccessExpire: 604800
+  RefreshExpire: 6048000
+
+SMTPConfig:
+  ClientOrigin: "http://localhost:3000"
+  EmailFrom: "nguyenduyh783@gmail.com"
+  SMTPHost: sandbox.smtp.mailtrap.io
+  SMTPUser: "nguyenduyhungit17@gmail.com"
+  SMTPPass: bfyu wcgf vpsd ruig
+  SMTPPort: 587

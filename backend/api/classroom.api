@@ -1,0 +1,61 @@
+info (
+	title:   "Classroom Service Models"
+	author:  "NguyenHung"
+	version: "1.0"
+)
+
+import "model.api"
+
+type (
+	LoginReq {
+		UserName string `json:"user_name"`
+		PassWord string `json:"password"`
+	}
+	LoginData {
+		User  User   `json:"user"`
+		Token string `json:"token"`
+	}
+	LoginRes {
+		Code    int       `json:"code"`
+		Message string    `json:"message"`
+		Data    LoginData `json:"data"`
+	}
+)
+
+type (
+	RegisterReq {
+		UserName    string `json:"user_name"`
+		Password    string `json:"password"`
+		Email       string `json:"email"`
+		PhoneNumber string `json:"phone_number"`
+		FullName    string `json:"full_name"`
+		Gender      int    `json:"gender"`
+	}
+	RegisterData {
+		User  User   `json:"user"` // Account info
+		Token string `json:"token"` // jwt token for api
+	}
+	RegisterRes {
+		Code    int          `json:"code"` // Result code: 0 is success. Otherwise, getting an error
+		Message string       `json:"message"` // Result message: detail response code
+		Data    RegisterData `json:"data"`
+	}
+)
+
+@server (
+	prefix: /classroom
+)
+service classroom-api {
+	@doc (
+		summary: "Login"
+	)
+	@handler Login
+	post /user/login (LoginReq) returns (LoginRes)
+
+	@doc (
+		summary: "Register"
+	)
+	@handler Register
+	post /user/register (RegisterReq) returns (RegisterRes)
+}
+

@@ -1,0 +1,75 @@
+USERS
+| Trường                       | Giải thích                                      |
+| ---------------------------- | ----------------------------------------------- |
+| `id`                         | Khóa chính, tự động tăng.                       |
+| `user_name`                  | Tên đăng nhập duy nhất.                         |
+| `password`                   | Mật khẩu đã được mã hóa.                        |
+| `email`                      | Email duy nhất, dùng xác thực.                  |
+| `role`                       | `1` = giáo viên, `2` = học sinh.                |
+| `is_verified`                | Trạng thái xác thực email.                      |
+| `verification_code`          | Mã xác thực gửi qua email.                      |
+| `create_time`, `update_time` | Thời gian tạo và cập nhật thông tin người dùng. |
+
+
+CLASSES
+| Trường                      | Giải thích                              |
+| --------------------------- | --------------------------------------- |
+| `id`                        | ID lớp học.                             |
+| `class_code`                | Mã lớp duy nhất (giống mã mời vào lớp). |
+| `teacher_id`                | Người tạo lớp, tham chiếu `users.id`.   |
+| `class_name`, `description` | Tên và mô tả lớp học.                   |
+
+ENROLLMENTS: GHI DANH HỌC SINH VÀO LỚP
+| Trường       | Giải thích                       |
+| ------------ | -------------------------------- |
+| `id`         | ID ghi danh.                     |
+| `student_id` | ID học sinh tham gia lớp.        |
+| `class_id`   | ID lớp học tương ứng.            |
+| `join_time`  | Thời điểm học sinh tham gia lớp. |
+
+
+SUBJECTS:MÔN HỌC
+| Trường         | Giải thích                |
+| -------------- | ------------------------- |
+| `id`           | ID môn học.               |
+| `class_id`     | Lớp học chứa môn học này. |
+| `subject_name` | Tên môn học.              |
+| `description`  | Mô tả môn học.            |
+
+LESSONS: BÀI HỌC THEO TỪNG MÔN
+| Trường        | Giải thích                              |
+| ------------- | --------------------------------------- |
+| `id`          | ID bài học.                             |
+| `subject_id`  | Thuộc môn học nào.                      |
+| `title`       | Tên bài học.                            |
+| `file_url`    | Đường dẫn tài liệu (PDF, PPT, Word...). |
+| `upload_time` | Ngày đăng tải.                          |
+
+
+GRADE_COMPONENTS: THÀNH PHẦN ĐIỂM CỦA MÔN HỌC
+| Trường           | Giải thích                                   |
+| ---------------- | -------------------------------------------- |
+| `id`             | ID đầu điểm.                                 |
+| `subject_id`     | Thuộc về môn học nào.                        |
+| `component_name` | Tên đầu điểm (ví dụ: "Midterm").             |
+| `weight`         | Trọng số tính điểm trung bình (tính theo %). |
+
+
+GRADE : BẢNG ĐIỂM HỌC sinh
+| Trường         | Giải thích                  |
+| -------------- | --------------------------- |
+| `id`           | ID điểm số.                 |
+| `student_id`   | Ai là người được chấm điểm. |
+| `component_id` | Đầu điểm tương ứng.         |
+| `score`        | Số điểm đạt được (0 – 10).  |
+| `grade_time`   | Ngày chấm điểm.             |
+
+EMAIL_CONFIRMATIONS
+| Trường              | Giải thích                     |
+| ------------------- | ------------------------------ |
+| `id`                | ID bản ghi.                    |
+| `user_id`           | Người nhận mã xác thực.        |
+| `confirmation_code` | Mã xác thực được gửi.          |
+| `is_verified`       | Đã xác thực chưa.              |
+| `sent_time`         | Thời điểm gửi mã.              |
+| `verified_time`     | Thời điểm xác thực thành công. |
