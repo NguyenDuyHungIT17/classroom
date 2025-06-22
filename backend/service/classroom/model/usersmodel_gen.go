@@ -9,7 +9,6 @@ import (
 	"database/sql"
 	"fmt"
 	"strings"
-	"time"
 
 	"github.com/zeromicro/go-zero/core/stores/builder"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
@@ -50,8 +49,8 @@ type (
 		IsVerified       bool           `db:"is_verified"`
 		VerificationCode sql.NullString `db:"verification_code"`
 		Role             int64          `db:"role"` // 1: teacher, 2: student
-		CreateTime       time.Time      `db:"create_time"`
-		UpdateTime       time.Time      `db:"update_time"`
+		CreateTime       int64          `db:"create_time"`
+		UpdateTime       int64          `db:"update_time"`
 	}
 )
 

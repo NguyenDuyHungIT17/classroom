@@ -18,6 +18,7 @@ type (
 		withSession(session sqlx.Session) UsersModel
 		FindOneByUserNameOrEmail(ctx context.Context, username, email string) (*Users, error)
 		InsertDb(ctx context.Context, data *Users) (int64, error)
+		UpdateDb(ctx context.Context, data *Users) (int64, error)
 	}
 
 	customUsersModel struct {
@@ -67,6 +68,30 @@ func (m *customUsersModel) InsertDb(ctx context.Context, data *Users) (int64, er
 		data.Role,
 		data.CreateTime,
 		data.UpdateTime,
+	)
+	if err != nil {
+		return 0, err
+	}
+	return result.LastInsertId()
+}
+
+func (m *customUsersModel) UpdateDb(ctx context.Context, data *Users) (int64, error) {
+	query := fmt.Sprintf("update %s set `user_name` = ?, `password` = ?, `email` = ?, `phone_number` = ?, `gender` = ?, `full_name` = ?, `avatar` = ?, `is_verified` = ?, `verification_code` = ?, `role` = ?, `create_time` = ?, `update_time` = ? where `id` = ?", m.table)
+
+	result, err := m.conn.ExecCtx(ctx, query,
+		data.UserName,
+		data.Password,
+		data.Email,
+		data.PhoneNumber,
+		data.Gender,
+		data.FullName,
+		data.Avatar,
+		data.IsVerified,
+		data.VerificationCode,
+		data.Role,
+		data.CreateTime,
+		data.UpdateTime,
+		data.Id,
 	)
 	if err != nil {
 		return 0, err

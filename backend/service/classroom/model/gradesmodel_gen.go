@@ -9,7 +9,6 @@ import (
 	"database/sql"
 	"fmt"
 	"strings"
-	"time"
 
 	"github.com/zeromicro/go-zero/core/stores/builder"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
@@ -37,11 +36,11 @@ type (
 	}
 
 	Grades struct {
-		Id          int64     `db:"id"`
-		StudentId   int64     `db:"student_id"`
-		ComponentId int64     `db:"component_id"`
-		Score       float64   `db:"score"`
-		GradeTime   time.Time `db:"grade_time"`
+		Id          int64   `db:"id"`
+		StudentId   int64   `db:"student_id"`
+		ComponentId int64   `db:"component_id"`
+		Score       float64 `db:"score"`
+		GradeTime   int64   `db:"grade_time"`
 	}
 )
 

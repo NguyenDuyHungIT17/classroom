@@ -9,7 +9,6 @@ import (
 	"database/sql"
 	"fmt"
 	"strings"
-	"time"
 
 	"github.com/zeromicro/go-zero/core/stores/builder"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
@@ -42,7 +41,7 @@ type (
 		Title      string         `db:"title"`
 		Content    sql.NullString `db:"content"`
 		FileUrl    sql.NullString `db:"file_url"`
-		UploadTime time.Time      `db:"upload_time"`
+		UploadTime int64          `db:"upload_time"`
 	}
 )
 

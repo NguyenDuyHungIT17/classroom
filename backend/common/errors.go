@@ -18,4 +18,10 @@ const (
 const (
 	USER_EXISTED_CODE = 1200
 	USER_EXISTED_MESS = "user existed"
+
+	USER_IS_NOT_EXIST_CODE = 1201
+	USER_IS_NOT_EXIST_MESS = "user is not exist"
+
+	PASSWORD_IS_WRONG_CODE = 1202
+	PASSWORD_IS_WRONG_MESS = "password is wrong"
 )

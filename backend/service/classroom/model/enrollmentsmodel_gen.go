@@ -9,7 +9,6 @@ import (
 	"database/sql"
 	"fmt"
 	"strings"
-	"time"
 
 	"github.com/zeromicro/go-zero/core/stores/builder"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
@@ -37,10 +36,10 @@ type (
 	}
 
 	Enrollments struct {
-		Id        int64     `db:"id"`
-		StudentId int64     `db:"student_id"`
-		ClassId   int64     `db:"class_id"`
-		JoinTime  time.Time `db:"join_time"`
+		Id        int64 `db:"id"`
+		StudentId int64 `db:"student_id"`
+		ClassId   int64 `db:"class_id"`
+		JoinTime  int64 `db:"join_time"`
 	}
 )
 

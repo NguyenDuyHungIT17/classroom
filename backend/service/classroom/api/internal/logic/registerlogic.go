@@ -78,8 +78,8 @@ func (l *RegisterLogic) Register(req *types.RegisterReq) (resp *types.RegisterRe
 		IsVerified:       false,
 		VerificationCode: sql.NullString{String: verificationCode, Valid: true},
 		Role:             common.USER_ROLE_CUSTOMER,
-		CreateTime:       time.UnixMilli(currentTime),
-		UpdateTime:       time.UnixMilli(currentTime),
+		CreateTime:       currentTime,
+		UpdateTime:       currentTime,
 	}
 
 	subject = "HDClassroom - Thông báo tài khoản"
@@ -138,8 +138,8 @@ func (l *RegisterLogic) Register(req *types.RegisterReq) (resp *types.RegisterRe
 				Avatar:      "",
 				IsVerified:  user.IsVerified,
 				Role:        int(user.Role),
-				CreateTime:  user.CreateTime.Format("2006-01-02 15:04:05"),
-				UpdateTime:  user.UpdateTime.Format("2006-01-02 15:04:05"),
+				CreateTime:  user.CreateTime,
+				UpdateTime:  user.UpdateTime,
 			},
 			Token: token,
 		},

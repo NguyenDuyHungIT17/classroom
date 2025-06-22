@@ -16,7 +16,7 @@ func GetJwtToken(secretKey string, iat, seconds, userId int64, role int) (string
 	claims["userId"] = userId
 	claims["role"] = role
 
-	token := jwt.New(jwt.SigningMethodES256)
+	token := jwt.New(jwt.SigningMethodHS256)
 	token.Claims = claims
 
 	return token.SignedString([]byte(secretKey))

@@ -13,6 +13,6 @@ SMTPConfig:
   ClientOrigin: "http://localhost:3000"
   EmailFrom: "nguyenduyh783@gmail.com"
   SMTPHost: sandbox.smtp.mailtrap.io
-  SMTPUser: "nguyenduyhungit17@gmail.com"
-  SMTPPass: bfyu wcgf vpsd ruig
+  SMTPUser: "0266a24a6349f7"
+  SMTPPass: 1b322cce007ffe
   SMTPPort: 587

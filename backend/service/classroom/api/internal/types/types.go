@@ -9,8 +9,8 @@ type Class struct {
 	ClassName   string `json:"class_name"`
 	Description string `json:"description"`
 	TeacherId   int64  `json:"teacher_id"`
-	CreatedTime string `json:"created_time"`
-	UpdatedTime string `json:"updated_time"`
+	CreatedTime int64  `json:"created_time"`
+	UpdatedTime int64  `json:"updated_time"`
 }
 
 type EmailConfirmation struct {
@@ -50,7 +50,7 @@ type Lesson struct {
 	Title      string `json:"title"`
 	Content    string `json:"content"`
 	FileUrl    string `json:"file_url"`
-	UploadTime string `json:"upload_time"`
+	UploadTime int64  `json:"upload_time"`
 }
 
 type LoginData struct {
@@ -94,8 +94,8 @@ type Subject struct {
 	ClassId     int64  `json:"class_id"`
 	SubjectName string `json:"subject_name"`
 	Description string `json:"description"`
-	CreateTime  string `json:"create_time"`
-	UpdateTime  string `json:"update_time"`
+	CreateTime  int64  `json:"create_time"`
+	UpdateTime  int64  `json:"update_time"`
 }
 
 type User struct {
@@ -110,6 +110,6 @@ type User struct {
 	IsVerified       bool   `json:"is_verified"`
 	VerificationCode string `json:"verification_code"`
 	Role             int    `json:"role"` // 1: teacher, 2: student
-	CreateTime       string `json:"create_time"`
-	UpdateTime       string `json:"update_time"`
+	CreateTime       int64  `json:"create_time"`
+	UpdateTime       int64  `json:"update_time"`
 }

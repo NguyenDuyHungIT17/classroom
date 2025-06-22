@@ -9,7 +9,6 @@ import (
 	"database/sql"
 	"fmt"
 	"strings"
-	"time"
 
 	"github.com/zeromicro/go-zero/core/stores/builder"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
@@ -41,8 +40,8 @@ type (
 		ClassId     int64          `db:"class_id"`
 		SubjectName string         `db:"subject_name"`
 		Description sql.NullString `db:"description"`
-		CreateTime  time.Time      `db:"create_time"`
-		UpdateTime  time.Time      `db:"update_time"`
+		CreateTime  int64          `db:"create_time"`
+		UpdateTime  int64          `db:"update_time"`
 	}
 )
 

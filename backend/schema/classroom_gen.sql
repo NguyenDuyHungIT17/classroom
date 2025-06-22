@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS `users` (
     `is_verified` BOOLEAN NOT NULL DEFAULT FALSE,
     `verification_code` VARCHAR(20),
     `role` INT NOT NULL COMMENT '1: teacher, 2: student',
-    `create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `update_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `create_time` BIGINT NOT NULL,
+    `update_time` BIGINT NOT NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -27,8 +27,8 @@ CREATE TABLE IF NOT EXISTS `classes` (
     `class_name` VARCHAR(100) NOT NULL,
     `description` TEXT,
     `teacher_id` BIGINT NOT NULL,
-    `create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `update_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `create_time` BIGINT NOT NULL,
+    `update_time` BIGINT NOT NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `enrollments` (
     `id` BIGINT NOT NULL AUTO_INCREMENT,
     `student_id` BIGINT NOT NULL,
     `class_id` BIGINT NOT NULL,
-    `join_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `join_time` BIGINT NOT NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -47,8 +47,8 @@ CREATE TABLE IF NOT EXISTS `subjects` (
     `class_id` BIGINT NOT NULL,
     `subject_name` VARCHAR(100) NOT NULL,
     `description` TEXT,
-    `create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `update_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `create_time` BIGINT NOT NULL,
+    `update_time` BIGINT NOT NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `lessons` (
     `title` VARCHAR(200) NOT NULL,
     `content` TEXT,
     `file_url` VARCHAR(500),
-    `upload_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `upload_time` BIGINT NOT NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `grades` (
     `student_id` BIGINT NOT NULL,
     `component_id` BIGINT NOT NULL,
     `score` DECIMAL(5,2) NOT NULL,
-    `grade_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `grade_time` BIGINT NOT NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `email_confirmations` (
     `user_id` BIGINT NOT NULL,
     `confirmation_code` VARCHAR(255) NOT NULL,
     `is_verified` BOOLEAN DEFAULT FALSE,
-    `sent_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `verified_time` TIMESTAMP NULL,
+    `sent_time` BIGINT NOT NULL,
+    `verified_time` BIGINT NOT NULL,
     PRIMARY KEY (`id`)
 );

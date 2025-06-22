@@ -9,7 +9,6 @@ import (
 	"database/sql"
 	"fmt"
 	"strings"
-	"time"
 
 	"github.com/zeromicro/go-zero/core/stores/builder"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
@@ -37,12 +36,12 @@ type (
 	}
 
 	EmailConfirmations struct {
-		Id               int64        `db:"id"`
-		UserId           int64        `db:"user_id"`
-		ConfirmationCode string       `db:"confirmation_code"`
-		IsVerified       bool         `db:"is_verified"`
-		SentTime         time.Time    `db:"sent_time"`
-		VerifiedTime     sql.NullTime `db:"verified_time"`
+		Id               int64  `db:"id"`
+		UserId           int64  `db:"user_id"`
+		ConfirmationCode string `db:"confirmation_code"`
+		IsVerified       bool   `db:"is_verified"`
+		SentTime         int64  `db:"sent_time"`
+		VerifiedTime     int64  `db:"verified_time"`
 	}
 )
 
