@@ -65,7 +65,7 @@ func (l *RegisterLogic) Register(req *types.RegisterReq) (resp *types.RegisterRe
 	}
 
 	passwordHash = utils.GetMD5Hasd(req.Password)
-	verificationCode = utils.GenerateResetToke()
+	verificationCode = utils.GenerateResetToken()
 
 	user = &model.Users{
 		UserName:         req.UserName,

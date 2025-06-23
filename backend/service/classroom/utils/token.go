@@ -22,7 +22,7 @@ func GetJwtToken(secretKey string, iat, seconds, userId int64, role int) (string
 	return token.SignedString([]byte(secretKey))
 }
 
-func GenerateResetToke() string {
+func GenerateResetToken() string {
 	rand.Seed(time.Now().UnixNano())
 
 	tokenLength := 20

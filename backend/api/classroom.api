@@ -42,6 +42,28 @@ type (
 	}
 )
 
+type (
+	ForgetPasswordReq {
+		UserName string `json:"user_name"`
+		Email    string `json:"email"`
+	}
+	ForgetPasswordRes {
+		Code    int    `json:"code"`
+		Message string `json:"message"`
+	}
+)
+
+type (
+	VerifyEmailNoAuthReq {
+		Email string `form:"email"`
+		Token string `form:"token"`
+	}
+	VerifyEmailNoAuthRes {
+		Code    int    `json:"code"`
+		Message string `json:"message"`
+	}
+)
+
 @server (
 	prefix: /classroom
 )
@@ -57,5 +79,17 @@ service classroom-api {
 	)
 	@handler Register
 	post /user/register (RegisterReq) returns (RegisterRes)
+
+	@doc (
+		summary: "ForgetPassword"
+	)
+	@handler ForgetPassword
+	post /user/forget-password (ForgetPasswordReq) returns (ForgetPasswordRes)
+
+	@doc (
+		summary: "VerifyEmailNoAuth"
+	)
+	@handler VerifyEmailNoAuth
+	get /verify-email (VerifyEmailNoAuthReq) returns (VerifyEmailNoAuthRes)
 }
 

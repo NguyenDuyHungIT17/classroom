@@ -15,6 +15,12 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 	server.AddRoutes(
 		[]rest.Route{
 			{
+				// ForgetPassword
+				Method:  http.MethodPost,
+				Path:    "/user/forget-password",
+				Handler: ForgetPasswordHandler(serverCtx),
+			},
+			{
 				// Login
 				Method:  http.MethodPost,
 				Path:    "/user/login",
@@ -25,6 +31,12 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodPost,
 				Path:    "/user/register",
 				Handler: RegisterHandler(serverCtx),
+			},
+			{
+				// VerifyEmailNoAuth
+				Method:  http.MethodGet,
+				Path:    "/verify-email",
+				Handler: VerifyEmailNoAuthHandler(serverCtx),
 			},
 		},
 		rest.WithPrefix("/classroom"),

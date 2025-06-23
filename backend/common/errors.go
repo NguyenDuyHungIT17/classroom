@@ -24,4 +24,7 @@ const (
 
 	PASSWORD_IS_WRONG_CODE = 1202
 	PASSWORD_IS_WRONG_MESS = "password is wrong"
+
+	INVALID_TOKEN_CODE = 1203
+	INVALID_TOKEN_MESS = "forbidden access"
 )

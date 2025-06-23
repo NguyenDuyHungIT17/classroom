@@ -29,6 +29,16 @@ type Enrollment struct {
 	JoinTime  string `json:"join_time"`
 }
 
+type ForgetPasswordReq struct {
+	UserName string `json:"user_name"`
+	Email    string `json:"email"`
+}
+
+type ForgetPasswordRes struct {
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+}
+
 type Grade struct {
 	Id          int64   `json:"id"`
 	StudentId   int64   `json:"student_id"`
@@ -112,4 +122,14 @@ type User struct {
 	Role             int    `json:"role"` // 1: teacher, 2: student
 	CreateTime       int64  `json:"create_time"`
 	UpdateTime       int64  `json:"update_time"`
+}
+
+type VerifyEmailNoAuthReq struct {
+	Email string `form:"email"`
+	Token string `form:"token"`
+}
+
+type VerifyEmailNoAuthRes struct {
+	Code    int    `json:"code"`
+	Message string `json:"message"`
 }
