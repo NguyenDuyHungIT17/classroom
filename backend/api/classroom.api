@@ -64,6 +64,75 @@ type (
 	}
 )
 
+type (
+	ResetPasswordReq {
+		Username string `json:"user_name"`
+		PassWord string `json:"password"`
+	}
+	ResetPasswordRes {
+		Code    int    `json:"code"`
+		Message string `json:"message"`
+	}
+)
+
+//user
+type (
+	GetUserReq {
+		UserId int64 `path:"user_id"`
+	}
+	GetUserData {
+		User User `json:"user"`
+	}
+	GetUserRes {
+		Code    int         `json:"code"`
+		Message string      `json:"message"`
+		Data    GetUserData `json:"data"`
+	}
+)
+
+type (
+	GetUsersReq {
+		Email  string `form:"email,optional"`
+		Limit  int    `form:"limit"` // == 0 get all
+		Offset int    `form:"offset"` // offset of page
+	}
+	GetUsersData {
+		User []User `json:"user"`
+	}
+	GetUsersRes {
+		Code    int          `json:"code"` // Result code: 0 is success. Otherwise, getting an error
+		Message string       `json:"message"` // Result message: detail response code
+		Data    GetUsersData `json:"data"`
+	}
+)
+
+type (
+	UpdateUserReq {
+		UserId      int64  `path:"user_id"`
+		PhoneNumber string `form:"phone_number"`
+		Gender      int    `form:"gender"`
+		FullName    string `form:"full_name"`
+	}
+	UpdateUserData {
+		User User `json:"user"`
+	}
+	UpdateUserRes {
+		Code    int            `json:"code"` // Result code: 0 is success. Otherwise, getting an error
+		Message string         `json:"message"` // Result message: detail response code
+		Data    UpdateUserData `json:"data"`
+	}
+)
+
+type (
+	DeleteUserReq {
+		UserId int64 `path:"user_id"`
+	}
+	DeleteUserRes {
+		Code    int    `json:"code"`
+		Message string `json:"message"`
+	}
+)
+
 @server (
 	prefix: /classroom
 )
@@ -91,5 +160,41 @@ service classroom-api {
 	)
 	@handler VerifyEmailNoAuth
 	get /verify-email (VerifyEmailNoAuthReq) returns (VerifyEmailNoAuthRes)
+}
+
+@server (
+	prefix: /classroom
+	jwt:    Auth
+)
+service classroom-api {
+	@doc (
+		summary: "ResetPassword"
+	)
+	@handler ResetPassword
+	post /user/reset-password (ResetPasswordReq) returns (ResetPasswordRes)
+
+	@doc (
+		summary: "GetUser"
+	)
+	@handler GetUser
+	get /user/:user_id (GetUserReq) returns (GetUserRes)
+
+	@doc (
+		summary: "GetUsers"
+	)
+	@handler GetUsers
+	get /user (GetUsersReq) returns (GetUsersRes)
+
+	@doc (
+		summary: "UpdateUser"
+	)
+	@handler UpdateUser
+	put /user/:user_id (UpdateUserReq) returns (UpdateUserRes)
+
+	@doc (
+		summary: "DeleteUser"
+	)
+	@handler DeleteUser
+	delete /user/:user_id (DeleteUserReq) returns (DeleteUserRes)
 }
 

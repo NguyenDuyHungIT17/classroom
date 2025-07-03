@@ -13,6 +13,15 @@ type Class struct {
 	UpdatedTime int64  `json:"updated_time"`
 }
 
+type DeleteUserReq struct {
+	UserId int64 `path:"user_id"`
+}
+
+type DeleteUserRes struct {
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+}
+
 type EmailConfirmation struct {
 	Id               int64  `json:"id"`
 	UserId           int64  `json:"user_id"`
@@ -37,6 +46,36 @@ type ForgetPasswordReq struct {
 type ForgetPasswordRes struct {
 	Code    int    `json:"code"`
 	Message string `json:"message"`
+}
+
+type GetUserData struct {
+	User User `json:"user"`
+}
+
+type GetUserReq struct {
+	UserId int64 `path:"user_id"`
+}
+
+type GetUserRes struct {
+	Code    int         `json:"code"`
+	Message string      `json:"message"`
+	Data    GetUserData `json:"data"`
+}
+
+type GetUsersData struct {
+	User []User `json:"user"`
+}
+
+type GetUsersReq struct {
+	Email  string `form:"email,optional"`
+	Limit  int    `form:"limit"`  // == 0 get all
+	Offset int    `form:"offset"` // offset of page
+}
+
+type GetUsersRes struct {
+	Code    int          `json:"code"`    // Result code: 0 is success. Otherwise, getting an error
+	Message string       `json:"message"` // Result message: detail response code
+	Data    GetUsersData `json:"data"`
 }
 
 type Grade struct {
@@ -99,6 +138,16 @@ type RegisterRes struct {
 	Data    RegisterData `json:"data"`
 }
 
+type ResetPasswordReq struct {
+	Username string `json:"user_name"`
+	PassWord string `json:"password"`
+}
+
+type ResetPasswordRes struct {
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+}
+
 type Subject struct {
 	Id          int64  `json:"id"`
 	ClassId     int64  `json:"class_id"`
@@ -106,6 +155,23 @@ type Subject struct {
 	Description string `json:"description"`
 	CreateTime  int64  `json:"create_time"`
 	UpdateTime  int64  `json:"update_time"`
+}
+
+type UpdateUserData struct {
+	User User `json:"user"`
+}
+
+type UpdateUserReq struct {
+	UserId      int64  `path:"user_id"`
+	PhoneNumber string `form:"phone_number"`
+	Gender      int    `form:"gender"`
+	FullName    string `form:"full_name"`
+}
+
+type UpdateUserRes struct {
+	Code    int            `json:"code"`    // Result code: 0 is success. Otherwise, getting an error
+	Message string         `json:"message"` // Result message: detail response code
+	Data    UpdateUserData `json:"data"`
 }
 
 type User struct {

@@ -41,4 +41,41 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		},
 		rest.WithPrefix("/classroom"),
 	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				// GetUsers
+				Method:  http.MethodGet,
+				Path:    "/user",
+				Handler: GetUsersHandler(serverCtx),
+			},
+			{
+				// GetUser
+				Method:  http.MethodGet,
+				Path:    "/user/:user_id",
+				Handler: GetUserHandler(serverCtx),
+			},
+			{
+				// UpdateUser
+				Method:  http.MethodPut,
+				Path:    "/user/:user_id",
+				Handler: UpdateUserHandler(serverCtx),
+			},
+			{
+				// DeleteUser
+				Method:  http.MethodDelete,
+				Path:    "/user/:user_id",
+				Handler: DeleteUserHandler(serverCtx),
+			},
+			{
+				// ResetPassword
+				Method:  http.MethodPost,
+				Path:    "/user/reset-password",
+				Handler: ResetPasswordHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+		rest.WithPrefix("/classroom"),
+	)
 }
