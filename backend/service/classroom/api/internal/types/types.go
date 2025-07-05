@@ -3,14 +3,30 @@
 
 package types
 
+type AddClassData struct {
+	Class   Class   `json:"class"`
+	Teacher Teacher `json:"teacher:`
+}
+
+type AddClassReq struct {
+	ClassName   string `json:"class_name"`
+	Description string `json:"description"`
+}
+
+type AddClassRes struct {
+	Code    int          `json:"code"`
+	Message string       `json:"message"`
+	Data    AddClassData `json:"data"`
+}
+
 type Class struct {
 	Id          int64  `json:"id"`
 	ClassCode   string `json:"class_code"`
 	ClassName   string `json:"class_name"`
 	Description string `json:"description"`
 	TeacherId   int64  `json:"teacher_id"`
-	CreatedTime int64  `json:"created_time"`
-	UpdatedTime int64  `json:"updated_time"`
+	CreateTime  int64  `json:"create_time"`
+	UpdateTime  int64  `json:"update_time"`
 }
 
 type DeleteUserReq struct {
@@ -155,6 +171,15 @@ type Subject struct {
 	Description string `json:"description"`
 	CreateTime  int64  `json:"create_time"`
 	UpdateTime  int64  `json:"update_time"`
+}
+
+type Teacher struct {
+	TeacherId  int64  `json:"teacher_id"`
+	ClassId    int64  `json:"class_id"`
+	UserId     int64  `json:"user_id"`
+	Bio        string `json:"bio"`
+	CreateTime int64  `json:"create_time"`
+	UpdateTime int64  `json:"update_time"`
 }
 
 type UpdateUserData struct {

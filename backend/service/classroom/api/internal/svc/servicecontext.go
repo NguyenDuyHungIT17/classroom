@@ -11,6 +11,7 @@ type ServiceContext struct {
 	Config config.Config
 
 	UsersModel              model.UsersModel
+	TeachersModel           model.TeachersModel
 	ClassesModel            model.ClassesModel
 	EnrollmentsModel        model.EnrollmentsModel
 	SubjectsModel           model.SubjectsModel
@@ -26,6 +27,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		Config: c,
 
 		UsersModel:              model.NewUsersModel(conn),
+		TeachersModel:           model.NewTeachersModel(conn),
 		ClassesModel:            model.NewClassesModel(conn),
 		EnrollmentsModel:        model.NewEnrollmentsModel(conn),
 		SubjectsModel:           model.NewSubjectsModel(conn),

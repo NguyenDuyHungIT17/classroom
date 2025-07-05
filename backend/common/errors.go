@@ -31,3 +31,9 @@ const (
 	INVALID_SESSION_USER_CODE = 1205
 	INVALID_SESSION_USER_MESS = "invalid session"
 )
+
+// teacher error
+const (
+	ADD_TEACHER_ERROR_CODE = 1300
+	ADD_TEACHER_ERROR_MESS = "teacher can not add"
+)

@@ -32,6 +32,17 @@ CREATE TABLE IF NOT EXISTS `classes` (
     PRIMARY KEY (`id`)
 );
 
+-- giáo viên
+CREATE TABLE `teachers` (
+    `teacher_id` BIGINT NOT NULL AUTO_INCREMENT,
+    `user_id` BIGINT NOT NULL UNIQUE,
+    `class_id` BIGINT,
+    `bio` TEXT,                
+    `create_time` BIGINT NOT NULL,
+    `update_time` BIGINT NOT NULL,
+    PRIMARY KEY(`teacher_id`)
+);
+
 -- Ghi danh
 CREATE TABLE IF NOT EXISTS `enrollments` (
     `id` BIGINT NOT NULL AUTO_INCREMENT,

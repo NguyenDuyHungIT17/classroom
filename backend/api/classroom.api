@@ -133,6 +133,23 @@ type (
 	}
 )
 
+//class
+type (
+	AddClassReq {
+		ClassName   string `json:"class_name"`
+		Description string `json:"description"`
+	}
+	AddClassData {
+		Class   Class   `json:"class"`
+		Teacher Teacher `json:"teacher:`
+	}
+	AddClassRes {
+		Code    int          `json:"code"`
+		Message string       `json:"message"`
+		Data    AddClassData `json:"data"`
+	}
+)
+
 @server (
 	prefix: /classroom
 )
@@ -196,5 +213,11 @@ service classroom-api {
 	)
 	@handler DeleteUser
 	delete /user/:user_id (DeleteUserReq) returns (DeleteUserRes)
+
+	@doc (
+		summary: "AddClass"
+	)
+	@handler AddClass
+	post /class (AddClassReq) returns (AddClassRes)
 }
 
