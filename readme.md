@@ -108,6 +108,6 @@ This is a personal learning project. Feel free to fork and suggest improvements.
 
 ---
 
-## 📄 License
+## 📬 Contact
 
-[MIT](LICENSE)
+For any inquiries or feedback, please reach out to [nguyenduyhungit17@gmail.com](mailto:nguyenduyhungit17@gmail.com).
