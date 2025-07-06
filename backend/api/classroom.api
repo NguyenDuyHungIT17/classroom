@@ -150,6 +150,22 @@ type (
 	}
 )
 
+type (
+	UpdateClassReq {
+		ClassId     int64  `path:"class_id"`
+		ClassName   string `form:"class_name"`
+		Description string `form:"description"`
+	}
+	UpdateClassData {
+		Class Class `json:"class"`
+	}
+	UpdateClassRes {
+		Code    int64           `json:"code"`
+		Message string          `json:"message"`
+		Data    UpdateClassData `json:"data"`
+	}
+)
+
 @server (
 	prefix: /classroom
 )
@@ -219,5 +235,11 @@ service classroom-api {
 	)
 	@handler AddClass
 	post /class (AddClassReq) returns (AddClassRes)
+
+	@doc (
+		summary: "UpdateClass"
+	)
+	@handler UpdateClass
+	put /class/:class_id (UpdateClassReq) returns (UpdateClassRes)
 }
 

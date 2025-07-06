@@ -182,6 +182,22 @@ type Teacher struct {
 	UpdateTime int64  `json:"update_time"`
 }
 
+type UpdateClassData struct {
+	Class Class `json:"class"`
+}
+
+type UpdateClassReq struct {
+	ClassId     int64  `path:"class_id"`
+	ClassName   string `form:"class_name"`
+	Description string `form:"description"`
+}
+
+type UpdateClassRes struct {
+	Code    int64           `json:"code"`
+	Message string          `json:"message"`
+	Data    UpdateClassData `json:"data"`
+}
+
 type UpdateUserData struct {
 	User User `json:"user"`
 }
