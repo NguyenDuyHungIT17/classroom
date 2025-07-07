@@ -51,10 +51,28 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: AddClassHandler(serverCtx),
 			},
 			{
+				// GetClasses
+				Method:  http.MethodGet,
+				Path:    "/class",
+				Handler: GetClassesHandler(serverCtx),
+			},
+			{
 				// UpdateClass
 				Method:  http.MethodPut,
 				Path:    "/class/:class_id",
 				Handler: UpdateClassHandler(serverCtx),
+			},
+			{
+				// DeleteClass
+				Method:  http.MethodDelete,
+				Path:    "/class/:class_id",
+				Handler: DeleteClassHandler(serverCtx),
+			},
+			{
+				// GetClass
+				Method:  http.MethodGet,
+				Path:    "/class/:class_id",
+				Handler: GetClassHandler(serverCtx),
 			},
 			{
 				// GetUsers

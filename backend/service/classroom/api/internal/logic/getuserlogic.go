@@ -82,5 +82,6 @@ func (l *GetUserLogic) GetUser(req *types.GetUserReq) (resp *types.GetUserRes, e
 			User: userOutPut,
 		},
 	}
+	l.Logger.Infof("Get User Succes: %v", resp)
 	return
 }

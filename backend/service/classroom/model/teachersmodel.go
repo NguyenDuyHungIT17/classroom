@@ -17,6 +17,7 @@ type (
 		withSession(session sqlx.Session) TeachersModel
 
 		InsertDb(ctx context.Context, data *Teachers) error
+		DeleteByClassId(ctx context.Context, classId int64) error
 	}
 
 	customTeachersModel struct {
@@ -45,5 +46,11 @@ func (m *customTeachersModel) InsertDb(ctx context.Context, data *Teachers) erro
 		data.UpdateTime,
 		data.ClassId,
 	)
+	return err
+}
+
+func (m *customTeachersModel) DeleteByClassId(ctx context.Context, classId int64) error {
+	query := fmt.Sprintf("delete from %v where `class_id` = ? ", m.table)
+	_, err := m.conn.ExecCtx(ctx, query, classId)
 	return err
 }

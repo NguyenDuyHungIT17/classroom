@@ -29,6 +29,15 @@ type Class struct {
 	UpdateTime  int64  `json:"update_time"`
 }
 
+type DeleteClassReq struct {
+	ClassId int64 `path:"class_id"`
+}
+
+type DeleteClassRes struct {
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+}
+
 type DeleteUserReq struct {
 	UserId int64 `path:"user_id"`
 }
@@ -62,6 +71,36 @@ type ForgetPasswordReq struct {
 type ForgetPasswordRes struct {
 	Code    int    `json:"code"`
 	Message string `json:"message"`
+}
+
+type GetClassData struct {
+	Class Class `json:"class"`
+}
+
+type GetClassReq struct {
+	ClassId int64 `path:"class_id"`
+}
+
+type GetClassRes struct {
+	Code    int          `json:"code"`
+	Message string       `json:"message"`
+	Data    GetClassData `json:"data"`
+}
+
+type GetClassesData struct {
+	Class []Class `json:"class"`
+}
+
+type GetClassesReq struct {
+	Email  string `form:"email,optional"`
+	Limit  int    `form:"limit"`  // == 0 get all
+	Offset int    `form:"offset"` // offset of page
+}
+
+type GetClassesRes struct {
+	Code    int            `json:"code"`    // Result code: 0 is success. Otherwise, getting an error
+	Message string         `json:"message"` // Result message: detail response code
+	Data    GetClassesData `json:"data"`
 }
 
 type GetUserData struct {

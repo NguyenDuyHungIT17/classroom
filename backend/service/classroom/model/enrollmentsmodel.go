@@ -1,6 +1,11 @@
 package model
 
-import "github.com/zeromicro/go-zero/core/stores/sqlx"
+import (
+	"context"
+	"fmt"
+
+	"github.com/zeromicro/go-zero/core/stores/sqlx"
+)
 
 var _ EnrollmentsModel = (*customEnrollmentsModel)(nil)
 
@@ -10,6 +15,8 @@ type (
 	EnrollmentsModel interface {
 		enrollmentsModel
 		withSession(session sqlx.Session) EnrollmentsModel
+
+		DeleteByClassId(ctx context.Context, classId int64) error
 	}
 
 	customEnrollmentsModel struct {
@@ -26,4 +33,10 @@ func NewEnrollmentsModel(conn sqlx.SqlConn) EnrollmentsModel {
 
 func (m *customEnrollmentsModel) withSession(session sqlx.Session) EnrollmentsModel {
 	return NewEnrollmentsModel(sqlx.NewSqlConnFromSession(session))
+}
+
+func (m *customEnrollmentsModel) DeleteByClassId(ctx context.Context, classId int64) error {
+	query := fmt.Sprintf("delete from %s where `class_id` = ? ", m.table)
+	_, err := m.conn.ExecCtx(ctx, query, classId)
+	return err
 }

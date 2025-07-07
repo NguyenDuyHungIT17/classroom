@@ -166,6 +166,46 @@ type (
 	}
 )
 
+type (
+	DeleteClassReq {
+		ClassId int64 `path:"class_id"`
+	}
+	DeleteClassRes {
+		Code    int    `json:"code"`
+		Message string `json:"message"`
+	}
+)
+
+type (
+	GetClassReq {
+		ClassId int64 `path:"class_id"`
+	}
+	GetClassData {
+		Class Class `json:"class"`
+	}
+	GetClassRes {
+		Code    int          `json:"code"`
+		Message string       `json:"message"`
+		Data    GetClassData `json:"data"`
+	}
+)
+
+type (
+	GetClassesReq {
+		Email  string `form:"email,optional"`
+		Limit  int    `form:"limit"` // == 0 get all
+		Offset int    `form:"offset"` // offset of page
+	}
+	GetClassesData {
+		Class []Class `json:"class"`
+	}
+	GetClassesRes {
+		Code    int            `json:"code"` // Result code: 0 is success. Otherwise, getting an error
+		Message string         `json:"message"` // Result message: detail response code
+		Data    GetClassesData `json:"data"`
+	}
+)
+
 @server (
 	prefix: /classroom
 )
@@ -241,5 +281,23 @@ service classroom-api {
 	)
 	@handler UpdateClass
 	put /class/:class_id (UpdateClassReq) returns (UpdateClassRes)
+
+	@doc (
+		summary: "DeleteClass"
+	)
+	@handler DeleteClass
+	delete /class/:class_id (DeleteClassReq) returns (DeleteClassRes)
+
+	@doc (
+		summary: "GetClass"
+	)
+	@handler GetClass
+	get /class/:class_id (GetClassReq) returns (GetClassRes)
+
+	@doc (
+		summary: "GetClasses"
+	)
+	@handler GetClasses
+	get /class (GetClassesReq) returns (GetClassesRes)
 }
 
