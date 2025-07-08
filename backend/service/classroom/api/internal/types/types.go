@@ -92,9 +92,8 @@ type GetClassesData struct {
 }
 
 type GetClassesReq struct {
-	Email  string `form:"email,optional"`
-	Limit  int    `form:"limit"`  // == 0 get all
-	Offset int    `form:"offset"` // offset of page
+	Limit  int `form:"limit"`  // == 0 get all
+	Offset int `form:"offset"` // offset of page
 }
 
 type GetClassesRes struct {
