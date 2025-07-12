@@ -83,6 +83,13 @@ func (l *AddClassLogic) AddClass(req *types.AddClassReq) (resp *types.AddClassRe
 
 	newClass.Id = classId
 	userId, err := l.ctx.Value("userId").(json.Number).Int64()
+	if err != nil || userId == 0 {
+		l.Logger.Error(common.INVALID_SESSION_USER_MESS)
+		return &types.AddClassRes{
+			Code:    common.INVALID_SESSION_USER_CODE,
+			Message: common.INVALID_SESSION_USER_MESS,
+		}, nil
+	}
 	//add teacher after create class
 	bio := newClass.ClassName + ": " + newClass.Description.String
 	teacher = &model.Teachers{
@@ -124,5 +131,6 @@ func (l *AddClassLogic) AddClass(req *types.AddClassReq) (resp *types.AddClassRe
 			},
 		},
 	}
+	l.Logger.Infof("Add Class success: %v", resp)
 	return
 }

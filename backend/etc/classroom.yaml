@@ -2,7 +2,13 @@ Name: classroom-api
 Host: 0.0.0.0
 Port: 8888
 
+
+# DataSource: user:123456@tcp(mysql:3306)/classroom
 DataSource: root:Duyhung@18022004mysql@tcp(localhost:3306)/classroom
+
+Log:
+  Level: info
+  Mode: console
 
 Auth:
   AccessSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxx

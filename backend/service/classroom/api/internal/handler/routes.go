@@ -75,6 +75,12 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: GetClassHandler(serverCtx),
 			},
 			{
+				// AddEnrollment
+				Method:  http.MethodPost,
+				Path:    "/class/join",
+				Handler: AddEnrollmentHandler(serverCtx),
+			},
+			{
 				// GetUsers
 				Method:  http.MethodGet,
 				Path:    "/user",

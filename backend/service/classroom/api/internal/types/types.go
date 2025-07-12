@@ -19,6 +19,20 @@ type AddClassRes struct {
 	Data    AddClassData `json:"data"`
 }
 
+type AddEnrollmentData struct {
+	Enrollment Enrollment `json:"enrollment"`
+}
+
+type AddEnrollmentReq struct {
+	ClassCode string `json:"class_code"`
+}
+
+type AddEnrollmentRes struct {
+	Code    int               `json:"code"`
+	Message string            `json:"message"`
+	Data    AddEnrollmentData `json:"data"`
+}
+
 type Class struct {
 	Id          int64  `json:"id"`
 	ClassCode   string `json:"class_code"`
@@ -57,10 +71,10 @@ type EmailConfirmation struct {
 }
 
 type Enrollment struct {
-	Id        int64  `json:"id"`
-	StudentId int64  `json:"student_id"`
-	ClassId   int64  `json:"class_id"`
-	JoinTime  string `json:"join_time"`
+	Id        int64 `json:"id"`
+	StudentId int64 `json:"student_id"`
+	ClassId   int64 `json:"class_id"`
+	JoinTime  int64 `json:"join_time"`
 }
 
 type ForgetPasswordReq struct {

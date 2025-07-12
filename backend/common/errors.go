@@ -37,3 +37,9 @@ const (
 	ADD_TEACHER_ERROR_CODE = 1300
 	ADD_TEACHER_ERROR_MESS = "teacher can not add"
 )
+
+// class error
+const (
+	CLASS_IS_NOT_EXIST_CODE = 1402
+	CLASS_IS_NOT_EXIST_MESS = "class is not exist"
+)

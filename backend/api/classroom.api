@@ -205,6 +205,21 @@ type (
 	}
 )
 
+//Student - enrollments
+type (
+	AddEnrollmentReq {
+		ClassCode string `json:"class_code"`
+	}
+	AddEnrollmentData {
+		Enrollment Enrollment `json:"enrollment"`
+	}
+	AddEnrollmentRes {
+		Code    int               `json:"code"`
+		Message string            `json:"message"`
+		Data    AddEnrollmentData `json:"data"`
+	}
+)
+
 @server (
 	prefix: /classroom
 )
@@ -298,5 +313,11 @@ service classroom-api {
 	)
 	@handler GetClasses
 	get /class (GetClassesReq) returns (GetClassesRes)
+
+	@doc (
+		summary: "AddEnrollment"
+	)
+	@handler AddEnrollment
+	post /class/join (AddEnrollmentReq) returns (AddEnrollmentRes)
 }
 
